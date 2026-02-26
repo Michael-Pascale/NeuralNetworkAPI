@@ -25,15 +25,12 @@ public class NeuralNetworkService implements INeuralNetworkService{
         return "Creating model: %s".formatted(network.toString());
     }
 
-    // TODO change findAll to a query that just gets name and date. the networks may be gb in size.
 
     /**
      * View information of all models on the system.
      */
     public List<NeuralNetworkInfo> viewModels() {
-        return repository.findAll().stream()
-                .map(neuralNetwork -> new NeuralNetworkInfo(neuralNetwork.getName(), neuralNetwork.getCreateTime()))
-                .toList();
+        return repository.findAllInfo();
     }
 
     /**
